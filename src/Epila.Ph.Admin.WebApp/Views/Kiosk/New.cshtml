@@ -1,0 +1,352 @@
+﻿
+@{
+    ViewData["Title"] = "New";
+}
+
+@section Css
+{
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/dashboard-ecommerce.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu.css">
+}
+
+<section id="dashboard-ecommerce">
+    <div class="row">
+        <!-- Templates -->
+        <div class="col-xl-8 col-md-12 col-12 dashboard-earning-swiper" id="widget-earnings">
+            <div class="card">
+                <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">
+                        <i class="livicon-evo" data-options="name: touch.svg; size: 50px; style: original;"></i>
+                        <span class="align-middle">Kiosk Template</span>
+                    </h5>
+                    <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-body py-1 px-0">
+                        <!-- kiosk starts -->
+                        <div class="widget-earnings-swiper swiper-container p-1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide rounded swiper-shadow py-50 px-2 d-flex align-items-center" id="clinic-kiosk">
+                                    <i class="livicon-evo" data-options="name: pulse.svg; size: 50px; style: lines-alt;"></i>
+                                    <div class="swiper-text">
+                                        <div class="swiper-heading">Clinic Kiosk</div>
+                                        <small class="d-block">Common Clinic</small>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide rounded swiper-shadow py-50 px-2 d-flex align-items-center" id="hotel-kiosk">
+                                    <i class="livicon-evo" data-options="name: building.svg; size: 50px; style: lines-alt;"></i>
+                                    <div class="swiper-text">
+                                        <div class="swiper-heading">Hotel Kiosk</div>
+                                        <small class="d-block">Common Hotel</small>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide rounded swiper-shadow py-50 px-2 d-flex align-items-center" id="custom-kiosk">
+                                    <i class="livicon-evo" data-options="name: thumbnails-big.svg; size: 50px; style: lines-alt;"></i>
+                                    <div class="swiper-text">
+                                        <div class="swiper-heading">Custom Kiosk</div>
+                                        <small class="d-block">Customize Kiosk</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- kiosk ends -->
+                    </div>
+                </div>
+                <div class="main-wrapper-content">
+                    <div class="wrapper-content" data-earnings="clinic-kiosk">
+                        <div class="widget-earnings-scroll mt-0 pt-0 mr-5 ml-5 pr-5 pl-5">
+                            <!-- message options section start -->
+                            <div class="row match-height mb-2 mt-0 mr-5  ml-5 p-4 bg-secondary accept-policy glow">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: pen.svg; size:50px; style: solid;"></i></h5>
+                                                    <h5 class="text-nowrap">
+                                                        CONSULTATION
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: heart.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class=" text-nowrap">
+                                                        PROCEDURE
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: lab.svg; size:38px; style: solid;"> </i></h5>
+                                                    <h6>
+                                                        CONSULTATION & PROCEDURE
+                                                    </h6>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: question-alt.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class="text-nowrap">
+                                                        INQUIRY
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="card glow mb-0 shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: users.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class="mb-1  text-nowrap">
+                                                        SENIOR CITIZEN
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a asp-action="Template" asp-route-template="Clinic" class="btn glow shadow btn-light-secondary mr-1 mb-1">
+                                    <i class="livicon-evo" data-options="name: hand-top.svg; size:25px; style: solid;"></i>
+                                    <span class="align-middle ml-25 mt-2">Select this template</span>
+                                </a>
+                            </div>
+                            <!-- // message options section end -->
+                        </div>
+                    </div>
+                    <div class="wrapper-content" data-earnings="hotel-kiosk">
+                        <div class="widget-earnings-scroll mt-0 pt-0 mr-5 ml-5 pr-5 pl-5">
+                            <!-- message options section start -->
+                            <div class="row match-height mb-2 mt-0 mr-5  ml-5 p-4 bg-secondary glow">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: building.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class="mb-1  text-nowrap">
+                                                        CHECK-IN
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="card glow mb-0 shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: question-alt.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class="mb-1  text-nowrap">
+                                                        INQUIRY
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn glow shadow btn-light-secondary mr-1 mb-1">
+                                    <i class="livicon-evo" data-options="name: hand-top.svg; size:25px; style: solid;"></i>
+                                    <span class="align-middle ml-25 mt-2">Select this template</span>
+                                </button>
+                            </div>
+                            <!-- // message options section end -->
+                        </div>
+                    </div>
+                    <div class="wrapper-content" data-earnings="custom-kiosk">
+                        <div class="widget-earnings-scroll mt-0 pt-0 mr-5 ml-5 pr-5 pl-5">
+                            <!-- message options section start -->
+                            <div class="row match-height mb-2 mt-0 mr-5  ml-5 p-4 bg-secondary accept-policy glow">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card  glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: magic.svg; size:50px; style: solid;"></i></h5>
+                                                    <h5 class="text-nowrap">
+                                                        SAMPLE
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: magic.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class=" text-nowrap">
+                                                        SAMPLE
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card  mb-0 glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: magic.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class=" text-nowrap">
+                                                        SAMPLE
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card  mb-0 glow shadow btn cursor-pointer block-multiple-msgs">
+                                        <div class="card-content">
+                                            <div class="card-body p-0">
+                                                <div class="form-group">
+                                                    <h5>  <i class="livicon-evo" data-options="name: magic.svg; size: 50px; style: solid;"></i></h5>
+                                                    <h5 class=" text-nowrap">
+                                                        SAMPLE
+                                                    </h5>
+                                                    <div class="multiple-msgs">
+                                                        <div class="text-bold-600">
+                                                            <span class="icon-spinner9 icon-spin text-left"></span>&nbsp; Loading ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn glow shadow btn-light-secondary mr-1 mb-1">
+                                    <i class="livicon-evo" data-options="name: hand-top.svg; size:25px; style: solid;"></i>
+                                    <span class="align-middle ml-25 mt-2">Select this template</span>
+                                </button>
+                            </div>
+                            <!-- // message options section end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- info -->
+        <div class="col-xl-4 col-12">
+            <section id="global-settings" class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Info.</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p>
+                                The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Bootstrap 4 and replaced
+                                with a “native font stack” for optimum text rendering on every device and OS. Read more about <a href="https://getbootstrap.com/docs/4.3/content/reboot/#native-font-stack" target="_blank">
+                                    native font
+                                    stacks
+                                </a>
+                            </p>
+                            <ul>
+                                <li>
+                                    Use a <a href="https://getbootstrap.com/docs/4.3/content/reboot/#native-font-stack">native font stack</a>
+                                    that selects the best <code class="highlighter-rouge">font-family</code> for each OS and device.
+                                </li>
+                                <li>Use the <code class="highlighter-rouge">$font-family-base</code>, <code class="highlighter-rouge">$font-size-base</code>, and <code class="highlighter-rouge">$line-height-base</code> attributes as our typographic base applied to the <code class="highlighter-rouge">&lt;body&gt;</code>.</li>
+                                <li>
+                                    Set the global link color via <code class="highlighter-rouge">$link-color</code> and apply link underlines
+                                    only on <code class="highlighter-rouge">:hover</code>.
+                                </li>
+                                <li>
+                                    Use <code class="highlighter-rouge">$body-bg</code> to set a <code class="highlighter-rouge">background-color</code> on the <code class="highlighter-rouge">&lt;body&gt;</code> (<code class="highlighter-rouge">#fff</code> by default).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="~/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+    <script src="~/app-assets/js/scripts/extensions/ext-component-block-ui.js"></script>
+}

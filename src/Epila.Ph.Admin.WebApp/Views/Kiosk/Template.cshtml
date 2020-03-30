@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Template";
+}
+@section Css
+{
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu.css">
+}
+@*<div class="content-header row">
+    <div class="content-header-left col-12 mb-2 mt-1">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h5 class="content-header-title float-left pr-1 mb-0">@ViewBag.TEMPLATE</h5>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb p-0 mb-0">
+                        <li class="breadcrumb-item"><a href="#"><i class="bx bx-card"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active"><a href="#">Create</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<section id="floating-label-layouts">
+    <div class="row match-height">
+        <div class="col-md-6 col-12 offset-md-3">
+            <div class="card" style="">
+                <div class="card-header">
+                    <h4 class="card-title">New @ViewBag.TEMPLATE Kiosk</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-label-group position-relative has-icon-left">
+                                            <input type="text" id="first-name-floating-icon" class="form-control" name="fname-floating-icon" placeholder="Kiosk Name">
+                                            <div class="form-control-position">
+                                                <i class="bx bx-user"></i>
+                                            </div>
+                                            <label for="first-name-floating-icon">Kiosk Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-label-group position-relative has-icon-left">
+                                            <textarea type="email" id="email-id-floating-icon" class="form-control" name="email-id-floating-icon" placeholder="Description"></textarea>
+                                            <div class="form-control-position">
+                                                <i class="bx bx-mail-send"></i>
+                                            </div>
+                                            <label for="email-id-floating-icon">Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn glow shadow btn-primary mr-1 mb-1">Submit</button>
+                                        <button type="reset" class="btn glow shadow btn-light-secondary mr-1 mb-1">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
