@@ -153,14 +153,14 @@ $(function () {
     e.stopPropagation();
     var $this = $(this)
     $this.parent('.favorite').toggleClass("warning");
-    if ($this.hasClass("bx-star")) {
-      $this.addClass("bxs-star");
-      $this.removeClass("bx-star");
-    }
-    else {
-      $this.addClass("bx-star");
-      $this.removeClass("bxs-star");
-    }
+    //if ($this.hasClass("bx-star")) {
+    //  $this.addClass("bxs-star");
+    //  $this.removeClass("bx-star");
+    //}
+    //else {
+    //  $this.addClass("bx-star");
+    //  $this.removeClass("bxs-star");
+    //}
   });
 
   // On checkbox click stop propogation

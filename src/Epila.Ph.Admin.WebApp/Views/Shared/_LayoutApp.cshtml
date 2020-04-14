@@ -16,7 +16,7 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/editors/quill/quill.snow.css">
+    @RenderSection("VendorCss", false)
     <!-- END: Vendor CSS-->
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap.css">
@@ -28,7 +28,7 @@
     <!-- END: Theme CSS-->
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/app-email.css">
+    @RenderSection("PageCss", false)
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
@@ -38,7 +38,7 @@
 <!-- END: Head-->
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern content-left-sidebar email-application navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="content-left-sidebar">
+<body class="vertical-layout vertical-menu-modern content-left-sidebar email-application navbar-sticky footer-static menu-collapsed" data-open="click" data-menu="vertical-menu-modern" data-col="content-left-sidebar">
 
     <!-- BEGIN: Header-->
     <div class="header-navbar-shadow"></div>
@@ -319,7 +319,7 @@
     <script src="~/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js"></script>
     <!-- BEGIN Vendor JS-->
     <!-- BEGIN: Page Vendor JS-->
-    <script src="~/app-assets/vendors/js/editors/quill/quill.min.js"></script>
+    @RenderSection("VendorScripts", false)
     <!-- END: Page Vendor JS-->
     <!-- BEGIN: Theme JS-->
     <script src="~/app-assets/js/scripts/configs/vertical-menu-light.js"></script>
