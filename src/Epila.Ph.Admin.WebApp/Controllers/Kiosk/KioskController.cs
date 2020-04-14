@@ -24,11 +24,11 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             ViewBag.TEMPLATE = template;
             switch (template)
             {
+                case KioskTemplateEnum.Custom:
+                    break;
                 case KioskTemplateEnum.Clinic:
                     break;
                 case KioskTemplateEnum.Hotel:
-                    break;
-                case KioskTemplateEnum.Custom:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(template), template, null);
