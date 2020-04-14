@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="Kiosk Admin">
-    <meta name="keywords" content="Epila,kiosk">
-    <meta name="author" content="DENNIS PITALLANO">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Epila.Ph.Admin.WebApp</title>
+    <meta name="description" content="Frest admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>Email Application - Frest - Bootstrap HTML admin template</title>
     <link rel="apple-touch-icon" href="~/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/extensions/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/editors/quill/quill.snow.css">
     <!-- END: Vendor CSS-->
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap.css">
@@ -28,13 +28,18 @@
     <!-- END: Theme CSS-->
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    @RenderSection("Css", false);
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/app-email.css">
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
     <!-- END: Custom CSS-->
+
 </head>
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+<!-- END: Head-->
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern content-left-sidebar email-application navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="content-left-sidebar">
+
     <!-- BEGIN: Header-->
     <div class="header-navbar-shadow"></div>
     <nav class="header-navbar main-header-navbar navbar-expand-lg navbar navbar-with-menu fixed-top ">
@@ -230,7 +235,7 @@
                     <span>Apps</span>
                 </li>
                 <li class=" nav-item">
-                    <a href="#"><i class="menu-livicon" data-icon="thumbnails-small"></i><span class="menu-title" data-i18n="Kiosk">Kiosk</span></a>
+                    <a asp-action="Index" asp-controller="Kiosk"><i class="menu-livicon" data-icon="thumbnails-small"></i><span class="menu-title" data-i18n="Kiosk">Kiosk</span></a>
                     <ul class="menu-content">
                         <li>
                             <a href="app-invoice-list.html"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Koisk List">Kiosk List</span></a>
@@ -294,14 +299,7 @@
     <!-- END: Main Menu-->
     <!-- BEGIN: Content-->
     <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                @RenderBody()
-            </div>
-        </div>
+        @RenderBody()
     </div>
     <!-- END: Content-->
     <div class="sidenav-overlay"></div>
@@ -321,9 +319,7 @@
     <script src="~/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js"></script>
     <!-- BEGIN Vendor JS-->
     <!-- BEGIN: Page Vendor JS-->
-    <script src="~/app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="~/app-assets/vendors/js/extensions/swiper.min.js"></script>
-    <script src="~/app-assets/vendors/js/extensions/dragula.min.js"></script>
+    <script src="~/app-assets/vendors/js/editors/quill/quill.min.js"></script>
     <!-- END: Page Vendor JS-->
     <!-- BEGIN: Theme JS-->
     <script src="~/app-assets/js/scripts/configs/vertical-menu-light.js"></script>
@@ -333,8 +329,9 @@
     <script src="~/app-assets/js/scripts/footer.js"></script>
     <!-- END: Theme JS-->
     <!-- BEGIN: Page JS-->
-    @RenderSection("Scripts", required: false)
+    @RenderSection("PageScripts", false)
     <!-- END: Page JS-->
-
 </body>
+<!-- END: Body-->
+
 </html>
