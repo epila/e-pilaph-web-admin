@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kiosk";
+    ViewData["ModuleTitle"] = "Kiosk Management";
     Layout = "_LayoutApp";
 }
 @section VendorCss{
@@ -68,7 +69,7 @@
             <div class="compose-new-mail-sidebar">
                 <div class="card shadow-none quill-wrapper p-0">
                     <div class="card-header">
-                        <h3 class="card-title" id="emailCompose">New Message</h3>
+                        <h3 class="card-title" id="emailCompose">New Kiosk</h3>
                         <button type="button" class="close close-icon">
                             <i class="bx bx-x"></i>
                         </button>
@@ -159,35 +160,12 @@
                                     <!-- delete unread dropdown -->
                                     <ul class="list-inline m-0 d-flex">
                                         <li class="list-inline-item mail-delete">
-                                            <button type="button" class="btn btn-icon action-icon">
+                                            <button type="button" class="btn btn-icon action-icon" data-toggle="tooltip" data-placement="top" title="Delete Selected">
                                                 <span class="fonticon-wrap">
                                                     <i class="livicon-evo" data-options="name: trash.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
                                                     </i>
                                                 </span>
                                             </button>
-                                        </li>
-                                        <li class="list-inline-item mail-unread">
-                                            <button type="button" class="btn btn-icon action-icon">
-                                                <span class="fonticon-wrap d-inline mr-25">
-                                                    <i class="livicon-evo" data-options="name: envelope-put.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
-                                                    </i>
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <div class="dropdown">
-                                                <button type="button" class="dropdown-toggle btn btn-icon action-icon" id="folder" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="fonticon-wrap">
-                                                        <i class="livicon-evo" data-options="name: morph-folder.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
-                                                        </i>
-                                                    </span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="folder">
-                                                    <a class="dropdown-item" href="#"><i class="bx bx-edit"></i> Draft</a>
-                                                    <a class="dropdown-item" href="#"><i class="bx bx-info-circle"></i>Spam</a>
-                                                    <a class="dropdown-item" href="#"><i class="bx bx-trash"></i>Trash</a>
-                                                </div>
-                                            </div>
                                         </li>
                                         <li class="list-inline-item">
                                             <div class="dropdown">
@@ -200,23 +178,11 @@
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="tag">
                                                     <a href="#" class="dropdown-item align-items-center">
                                                         <span class="bullet bullet-success bullet-sm"></span>
-                                                        <span>Product</span>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item align-items-center">
-                                                        <span class="bullet bullet-primary bullet-sm"></span>
-                                                        <span>Work</span>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item align-items-center">
-                                                        <span class="bullet bullet-warning bullet-sm"></span>
-                                                        <span>Misc</span>
+                                                        <span>Set to Active</span>
                                                     </a>
                                                     <a href="#" class="dropdown-item align-items-center">
                                                         <span class="bullet bullet-danger bullet-sm"></span>
-                                                        <span>Family</span>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item align-items-center">
-                                                        <span class="bullet bullet-info bullet-sm"></span>
-                                                        <span> Design</span>
+                                                        <span>Set to InActive</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -232,7 +198,7 @@
                                             <i class="bx bx-menu"></i>
                                         </div>
                                         <fieldset class="form-group position-relative has-icon-left m-0">
-                                            <input type="text" class="form-control" id="email-search" placeholder="Search email">
+                                            <input type="text" class="form-control" id="email-search" placeholder="Search kiosk">
                                             <div class="form-control-position">
                                                 <i class="bx bx-search"></i>
                                             </div>
@@ -260,7 +226,7 @@
                                                     <label for="checkboxsmall3"></label>
                                                 </div>
                                             </div>
-                                            <span class="favorite" title="Online">
+                                            <span class="favorite" title="Online" data-toggle="tooltip" data-placement="top">
                                                 <i class="livicon-evo" data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
                                             </span>
                                         </div>
@@ -287,7 +253,9 @@
                                                 </p>
                                                 <div class="mail-meta-item">
                                                     <span class="float-right d-flex align-items-center">
-                                                        <i class="bx bx-paperclip mr-50"></i>
+                                                        <a asp-action="Index" asp-controller="Kiosk" title="Configure" data-toggle="tooltip" data-placement="left">
+                                                            <i class="livicon-evo  mr-50" data-options="name: wrench.svg; size: 24px; style: original; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
+                                                        </a>
                                                         <span class="bullet bullet-success bullet-sm"></span>
                                                     </span>
                                                 </div>
@@ -303,7 +271,7 @@
                                                 </div>
                                             </div>
                                             <span class="favorite" title="Online">
-                                                <i class="livicon-evo" data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
+                                                <i class="livicon-evo " data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
                                             </span>
                                         </div>
                                         <div class="pr-50">
@@ -479,7 +447,7 @@
                                             <div class="user-details">
                                                 <div class="mail-items">
                                                     <span class="list-group-item-text text-truncate mb-0">
-                                                       Kiosk 1
+                                                        Kiosk 1
                                                     </span>
                                                 </div>
                                                 <div class="mail-meta-item">
@@ -603,8 +571,8 @@
                                     </span>
                                 </span>
                                 <h5 class="email-detail-title font-weight-normal mb-0">
-                                    Advertising Internet Online
-                                    <span class="badge badge-light-danger badge-pill ml-1">PRODUCT</span>
+                                    Kiosk Details
+                                    <span class="badge badge-light-danger badge-pill ml-1">MMC Kiosk 1</span>
                                 </h5>
                             </div>
                             <div class="email-header-right mb-1 ml-2 pl-1">
@@ -616,29 +584,6 @@
                                                 </i>
                                             </span>
                                         </button>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <button class="btn btn-icon action-icon">
-                                            <span class="fonticon-wrap">
-                                                <i class="livicon-evo" data-options="name: envelope-put.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
-                                                </i>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="dropdown">
-                                            <button class="btn btn-icon dropdown-toggle action-icon" id="open-mail-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="fonticon-wrap">
-                                                    <i class="livicon-evo" data-options="name: morph-folder.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
-                                                    </i>
-                                                </span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="open-mail-menu">
-                                                <a class="dropdown-item" href="#"><i class="bx bx-edit"></i> Draft</a>
-                                                <a class="dropdown-item" href="#"><i class="bx bx-info-circle"></i> Spam</a>
-                                                <a class="dropdown-item" href="#"><i class="bx bx-trash"></i> Trash</a>
-                                            </div>
-                                        </div>
                                     </li>
                                     <li class="list-inline-item">
                                         <div class="dropdown">
@@ -672,19 +617,6 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <span class="no-of-list d-none d-sm-block ml-1">1-10 of 653</span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <button class="btn btn-icon email-pagination-prev action-icon">
-                                            <i class='bx bx-chevron-left'></i>
-                                        </button>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <button class="btn btn-icon email-pagination-next action-icon">
-                                            <i class='bx bx-chevron-right'></i>
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -699,7 +631,7 @@
                                                 <div class="collapse-title media">
                                                     <div class="pr-1">
                                                         <div class="avatar mr-75">
-                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-18.jpg" alt="avtar img holder" width="30" height="30">
+                                                            <img src="~/app-assets/images/portrait/small/avatar-s-18.jpg" alt="avtar img holder" width="30" height="30">
                                                         </div>
                                                     </div>
                                                     <div class="media-body mt-25">
@@ -754,11 +686,11 @@
                                                         <label class="sidebar-label">Attached Files</label>
                                                         <ul class="list-unstyled mb-0">
                                                             <li class="cursor-pointer pb-25">
-                                                                <img src="../../../app-assets/images/icon/psd.png" height="30" alt="psd.png">
+                                                                <img src="~/app-assets/images/icon/psd.png" height="30" alt="psd.png">
                                                                 <small class="text-muted ml-1 attchement-text">uikit-design.psd</small>
                                                             </li>
                                                             <li class="cursor-pointer">
-                                                                <img src="../../../app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
+                                                                <img src="~/app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
                                                                 <small class="text-muted ml-1 attchement-text">uikit-design.sketch</small>
                                                             </li>
                                                         </ul>
@@ -766,12 +698,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card collapse-header" role="tablist">
+                                        <div class="card collapse-header open" role="tablist">
                                             <div id="headingCollapse6" class="card-header d-flex justify-content-between align-items-center" data-toggle="collapse" role="tab" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
                                                 <div class="collapse-title media">
                                                     <div class="pr-1">
                                                         <div class="avatar mr-75">
-                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-19.jpg" alt="avtar img holder" width="30" height="30">
+                                                            <img src="~/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avtar img holder" width="30" height="30">
                                                         </div>
                                                     </div>
                                                     <div class="media-body mt-25">
@@ -807,21 +739,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="collapse6" role="tabpanel" aria-labelledby="headingCollapse7" class="collapse">
+                                            <div id="collapse6" role="tabpanel" aria-labelledby="headingCollapse7" class="collapse show">
                                                 <div class="card-content">
                                                     <div class="card-body py-1">
                                                         <p class="text-bold-500">Greetings!</p>
                                                         <p>
-                                                            Successful businesses have many things in common, today we’ll look at the big ‘R’of recognition
-                                                            and how a digital advertising network may help. Recognition can be illustrated by two individuals
-                                                            entering a crowded room at a party. Both walk to the far side of the room, one of them slips
-                                                            through the crowd easily and unnoticed as they reach the far side.
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                            type and scrambled it to make a type specimen book.
                                                         </p>
                                                         <p>
-                                                            Gummies sweet tart marzipan lemon drops donut pie. Chocolate cake gingerbread jujubes gingerbread
-                                                            chocolate cake tart bear claw apple pie jelly-o.
-                                                            Gummies biscuit brownie marshmallow oat cake tootsie roll bear claw topping. Oat cake sesame snaps
-                                                            icing cupcake wafer tiramisu jelly-o sugar plum carrot cake
+                                                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                                                            essentially unchanged.
                                                         </p>
                                                         <p class="mb-0">Sincerely yours,</p>
                                                         <p class="text-bold-500">Envato Design Team</p>
@@ -830,11 +759,11 @@
                                                         <label class="sidebar-label">Attached Files</label>
                                                         <ul class="list-unstyled mb-0">
                                                             <li class="cursor-pointer pb-25">
-                                                                <img src="../../../app-assets/images/icon/psd.png" height="30" alt="psd.png">
+                                                                <img src="~/app-assets/images/icon/psd.png" height="30" alt="psd.png">
                                                                 <small class="text-muted ml-1 attchement-text">uikit-design.psd</small>
                                                             </li>
                                                             <li class="cursor-pointer">
-                                                                <img src="../../../app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
+                                                                <img src="~/app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
                                                                 <small class="text-muted ml-1 attchement-text">uikit-design.sketch</small>
                                                             </li>
                                                         </ul>
@@ -845,22 +774,17 @@
                                         <div class="card collapse-header open" role="tablist">
                                             <div id="headingCollapse7" class="card-header d-flex justify-content-between align-items-center" data-toggle="collapse" role="tab" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
                                                 <div class="collapse-title media">
-                                                    <div class="pr-1">
-                                                        <div class="avatar mr-75">
-                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-18.jpg" alt="avtar img holder" width="30" height="30">
+                                                    <div class="pr-0">
+                                                        <div class="mr-75">
+                                                            <i class="livicon-evo" data-options="name: touch.svg; size:45px; style: original;"></i>
                                                         </div>
                                                     </div>
                                                     <div class="media-body mt-25">
-                                                        <span class="text-primary">Elnora Reese</span>
-                                                        <span class="d-sm-inline d-none">&lt;elnora@gmail.com&gt;</span>
-                                                        <small class="text-muted d-block">to Lois Jimenez</small>
+                                                        <span class="text-primary">Queue Types </span>
+                                                        <small class="text-muted d-block">Kiosk Menu</small>
                                                     </div>
                                                 </div>
                                                 <div class="information d-sm-flex d-none align-items-center">
-                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
-                                                    <span class="favorite warning">
-                                                        <i class="bx bxs-star mr-25"></i>
-                                                    </span>
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle" id="third-open-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <i class='bx bx-dots-vertical-rounded mr-0'></i>
@@ -885,34 +809,126 @@
                                             <div id="collapse7" role="tabpanel" aria-labelledby="headingCollapse7" class="collapse show">
                                                 <div class="card-content">
                                                     <div class="card-body py-1">
-                                                        <p class="text-bold-500">Greetings!</p>
-                                                        <p>
-                                                            It is a long established fact that a reader will be distracted by the readable content of a page
-                                                            when looking at its layout.The point of using Lorem Ipsum is that it has a more-or-less normal
-                                                            distribution of letters, as opposed to using 'Content here, content here',making it look like
-                                                            readable English.
-                                                        </p>
-                                                        <p>
-                                                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                                                            alteration in some form, by injected humour, or randomised words which don't look even slightly
-                                                            believable.
-                                                        </p>
-                                                        <p class="mb-0">Sincerely yours,</p>
-                                                        <p class="text-bold-500">Envato Design Team</p>
+                                                        <!-- table start -->
+                                                        <div class="table-responsive">
+                                                            <table class="table mb-0 table-hover">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <i class="livicon-evo mr-1" data-options="name: pen.svg; size:50px; style: solid;"></i>
+                                                                                <div class="flex-content">
+                                                                                    <span class="font-medium-2 text-uppercase">Consultation</span><br>
+                                                                                    <span class="text-muted font-small-2">
+                                                                                        Consultation Description
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class=" d-flex justify-content-end align-items-end flex-column">
+                                                                                <span class="">
+                                                                                    <i class="text-bold-600 bx bx-time font-small-2"></i>
+                                                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
+                                                                                </span>
+                                                                                <span class="bullet bullet-success bullet-sm mr-50"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <i class="livicon-evo mr-1" data-options="name: heart.svg; size:50px; style: solid;"></i>
+                                                                                <div class="flex-content">
+                                                                                    <span class="font-medium-2 text-uppercase">Procedure</span><br>
+                                                                                    <span class="text-muted font-small-2">
+                                                                                        Procedure Description
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class=" d-flex justify-content-end align-items-end flex-column">
+                                                                                <span class="">
+                                                                                    <i class="text-bold-600 bx bx-time font-small-2"></i>
+                                                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
+                                                                                </span>
+                                                                                <span class="bullet bullet-success bullet-sm mr-50"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <i class="livicon-evo mr-1" data-options="name: lab.svg; size:50px; style: solid;"></i>
+                                                                                <div class="flex-content">
+                                                                                    <span class="font-medium-2 text-uppercase">Consultation & Procedure</span><br>
+                                                                                    <span class="text-muted font-small-2">
+                                                                                        Consultation & Procedure Description
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class=" d-flex justify-content-end align-items-end flex-column">
+                                                                                <span class="">
+                                                                                    <i class="text-bold-600 bx bx-time font-small-2"></i>
+                                                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
+                                                                                </span>
+                                                                                <span class="bullet bullet-success bullet-sm mr-50"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <i class="livicon-evo mr-1" data-options="name: question-alt.svg; size:50px; style: solid;"></i>
+                                                                                <div class="flex-content">
+                                                                                    <span class="font-medium-2 text-uppercase">Inquiry</span><br>
+                                                                                    <span class="text-muted font-small-2">
+                                                                                        Inquiry Description
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class=" d-flex justify-content-end align-items-end flex-column">
+                                                                                <span class="">
+                                                                                    <i class="text-bold-600 bx bx-time font-small-2"></i>
+                                                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
+                                                                                </span>
+                                                                                <span class="bullet bullet-success bullet-sm mr-50"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <i class="livicon-evo mr-1" data-options="name: users.svg; size:50px; style: solid;"></i>
+                                                                                <div class="flex-content">
+                                                                                    <span class="font-medium-2 text-uppercase">SENIOR CITIZEN</span><br>
+                                                                                    <span class="text-muted font-small-2">
+                                                                                        SENIOR CITIZEN Description
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class=" d-flex justify-content-end align-items-end flex-column">
+                                                                                <span class="">
+                                                                                    <i class="text-bold-600 bx bx-time font-small-2"></i>
+                                                                                    <small class="text-muted mr-50">05 Jul 2019, 10:30</small>
+                                                                                </span>
+                                                                                <span class="bullet bullet-success bullet-sm mr-50"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- table end -->
                                                     </div>
-                                                    <div class="card-footer pt-0 border-top">
-                                                        <label class="sidebar-label">Attached Files</label>
-                                                        <ul class="list-unstyled mb-0">
-                                                            <li class="cursor-pointer pb-25">
-                                                                <img src="~/app-assets/images/icon/psd.png" height="30" alt="psd.png">
-                                                                <small class="text-muted ml-1 attchement-text">uikit-design.psd</small>
-                                                            </li>
-                                                            <li class="cursor-pointer">
-                                                                <img src="~/app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
-                                                                <small class="text-muted ml-1 attchement-text">uikit-design.sketch</small>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
