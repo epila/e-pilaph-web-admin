@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Epila.Ph.Admin.WebApp.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,9 @@ namespace Epila.Ph.Admin.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Register services in Installers folder
+            services.AddServicesInAssembly(Configuration);
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

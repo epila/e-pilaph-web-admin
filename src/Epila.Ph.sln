@@ -7,7 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{667DC9A0-317B-4F10-8140-6AE7CEB1E0B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epila.Ph.Admin.WebApp", "Epila.Ph.Admin.WebApp\Epila.Ph.Admin.WebApp.csproj", "{B9928632-4BB5-49B6-A79C-15D7A1BE3553}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epila.Ph.Admin.WebApp", "Epila.Ph.Admin.WebApp\Epila.Ph.Admin.WebApp.csproj", "{B9928632-4BB5-49B6-A79C-15D7A1BE3553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epila.Ph.Services", "Epila.Ph.Admin.Services\Epila.Ph.Services.csproj", "{402FA5A0-AFF2-4920-9205-31F94D6F6ADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epila.Ph.Core", "Epila.Ph.Core\Epila.Ph.Core.csproj", "{B62191CC-501C-4CBC-B67A-C582FD1CD5BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +23,22 @@ Global
 		{B9928632-4BB5-49B6-A79C-15D7A1BE3553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9928632-4BB5-49B6-A79C-15D7A1BE3553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9928632-4BB5-49B6-A79C-15D7A1BE3553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402FA5A0-AFF2-4920-9205-31F94D6F6ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402FA5A0-AFF2-4920-9205-31F94D6F6ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402FA5A0-AFF2-4920-9205-31F94D6F6ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402FA5A0-AFF2-4920-9205-31F94D6F6ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62191CC-501C-4CBC-B67A-C582FD1CD5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62191CC-501C-4CBC-B67A-C582FD1CD5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62191CC-501C-4CBC-B67A-C582FD1CD5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62191CC-501C-4CBC-B67A-C582FD1CD5BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B9928632-4BB5-49B6-A79C-15D7A1BE3553} = {667DC9A0-317B-4F10-8140-6AE7CEB1E0B2}
+		{402FA5A0-AFF2-4920-9205-31F94D6F6ADB} = {65C8704A-0AEF-4684-9C4D-F20011F79768}
+		{B62191CC-501C-4CBC-B67A-C582FD1CD5BD} = {65C8704A-0AEF-4684-9C4D-F20011F79768}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F48B016-AD44-43C4-A0D3-15C785F0BAB8}

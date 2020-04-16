@@ -18,6 +18,11 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
+        public IActionResult Test()
+        {
+            return Json("");
+        }
+
         [Route("{template}")]
         public async Task<IActionResult> Template([FromRoute] KioskTemplateEnum template)
         {
