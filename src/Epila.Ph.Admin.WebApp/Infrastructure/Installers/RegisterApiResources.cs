@@ -7,6 +7,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Epila.Ph.Admin.WebApp.Infrastructure.Configs;
 using Epila.Ph.Core.Infrastructure;
+using Epila.Ph.Core.Constants;
+using Epila.Ph.Services.Kiosk;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
@@ -40,16 +42,15 @@ namespace Epila.Ph.Admin.WebApp.Infrastructure.Installers
             //Register a Typed Instance of HttpClientFactory for a Protected Resource
             //More info see: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.0
 
-            //services.AddHttpClient<IApiConnect, SampleApiConnect>(client =>
-            //    {
-            //        client.BaseAddress = new Uri(config["ApiResourceBaseUrls:SampleApi"]);
-            //        client.DefaultRequestHeaders.Accept.Clear();
-            //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(HttpContentMediaTypes.JSON));
-            //    })
-            //.SetHandlerLifetime(TimeSpan.FromMinutes(policyConfigs.HandlerTimeoutInMinutes))
-            //.AddPolicyHandler(request => request.Method == HttpMethod.Get ? retryPolicy : noOpPolicy)
-            //.AddPolicyHandler(timeoutPolicy)
-            //.AddPolicyHandler(circuitBreakerPolicy);
+            services.AddHttpClient<IKioskService, KioskService>(client =>
+                {
+                    client.BaseAddress = new Uri($"{config["ApiResourceBaseUrls:EpilaServiceApi"]}/Kiosk/");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(HttpContentMediaTypes.JSON));
+                })
+            .SetHandlerLifetime(TimeSpan.FromMinutes(policyConfigs.HandlerTimeoutInMinutes))
+            .AddPolicyHandler(request => request.Method == HttpMethod.Get ? retryPolicy : noOpPolicy)
+            .AddPolicyHandler(timeoutPolicy)
+            .AddPolicyHandler(circuitBreakerPolicy);
 
 
         }

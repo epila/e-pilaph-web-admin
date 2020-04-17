@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Epila.Ph.Admin.WebApp.Models.Kiosk;
+using Epila.Ph.Core.Domain.Kiosk;
+using Epila.Ph.Services.Kiosk;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
@@ -8,6 +10,13 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
     [Route("[controller]/[action]")]
     public class KioskController : Controller
     {
+        private readonly  IKioskService _kioskService;
+
+        public KioskController(IKioskService kioskService)
+        {
+            _kioskService = kioskService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -18,8 +27,16 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
-        public IActionResult Test()
+        public async Task<IActionResult> Test()
         {
+            //var result = await _kioskService.GetAllAsync().ConfigureAwait(false);
+            //var postresult = await _kioskService.UpdateAsync(new KioskRequest
+            //{
+            //    KioskDescription = "Kiosk Test Desc update",
+            //    KioskName = "Kiosk Test Name Update",
+            //    UserName = "pita"
+            //},2004).ConfigureAwait(false);
+            //var delete= await _kioskService.DeleteAsync(2005).ConfigureAwait(false);
             return Json("");
         }
 
