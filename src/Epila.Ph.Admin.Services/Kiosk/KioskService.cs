@@ -29,7 +29,12 @@ namespace Epila.Ph.Services.Kiosk
 
         public async Task<Core.Domain.Kiosk.Kiosk> GetByIdAsync(object id)
         {
-            throw new NotImplementedException();
+            using var response = await EPilaHttpClient.GetAsync($"{id}")
+                .ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+             var jsonString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = Unwrapper.Unwrap<Core.Domain.Kiosk.Kiosk>(jsonString);
+            return result;
         }
 
         public async Task<Core.Domain.Kiosk.Kiosk> CreateAsync(KioskRequest entity)

@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Epila.Ph.Admin.WebApp.Components.Kiosk
 {
-    public class KioskClinicTemplateViewComponent : ViewComponent
+    public class KioskListViewComponent : ViewComponent
     {
         public readonly IKioskService KioskService;
 
-        public KioskClinicTemplateViewComponent(IKioskService kioskService)
+        public KioskListViewComponent(IKioskService kioskService)
         {
             KioskService = kioskService;
         }

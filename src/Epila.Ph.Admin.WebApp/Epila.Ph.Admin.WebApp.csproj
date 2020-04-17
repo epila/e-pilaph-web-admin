@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Epila.Ph.Admin.Services\Epila.Ph.Services.csproj" />
     <ProjectReference Include="..\Epila.Ph.Core\Epila.Ph.Core.csproj" />
   </ItemGroup>

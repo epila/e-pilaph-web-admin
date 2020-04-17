@@ -1,0 +1,101 @@
+﻿@model Epila.Ph.Core.Domain.Kiosk.Kiosk
+<div id="headingCollapse5" class="card-header d-flex justify-content-between align-items-center" data-toggle="collapse" role="tab" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+    <div class="collapse-title media">
+        <div class="pr-1">
+            <div class="avatar mr-75">
+                <img src="~/app-assets/images/portrait/small/avatar-s-18.jpg" alt="avtar img holder" width="30" height="30">
+            </div>
+        </div>
+        <div class="media-body mt-25">
+            <span class="text-primary">@Model.KioskName</span>
+            <span class="d-sm-inline d-none"> &lt;elnora@gmail.com&gt;</span>
+            <small class="text-muted d-block">to Lois Jimenez</small>
+        </div>
+    </div>
+    <div class="information d-sm-flex d-none align-items-center">
+        <small class="text-muted mr-50">15 Jul 2019, 10:30</small>
+        <span class="favorite">
+            <i class="bx bx-star mr-25"></i>
+        </span>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="fisrt-open-submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class='bx bx-dots-vertical-rounded mr-0'></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="fisrt-open-submenu">
+                <a href="#" class="dropdown-item mail-reply">
+                    <i class='bx bx-share'></i>
+                    Reply
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class='bx bx-redo'></i>
+                    Forward
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class='bx bx-info-circle'></i>
+                    Report Spam
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="collapse5" role="tabpanel" aria-labelledby="headingCollapse5" class="collapse show">
+    <div class="card-content">
+        <div class="card-body py-1">
+            <div class="card-text">
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Description</dt>
+                    <dd class="col-sm-9">@Model.KioskDescription</dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Status</dt>
+                    <dd class="col-sm-9">
+                        <div class="badge badge-pill badge-light-success mr-1 mb-1">Active</div>
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Logo</dt>
+                    <dd class="col-sm-9 ml-auto">
+                        <img class="img-fluid" src="~/app-assets/images/portrait/small/mmc.png" alt="Alternate Text" />
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Online Status</dt>
+                    <dd class="col-sm-9">
+                        <i class="livicon-evo" data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right text-truncate">Created</dt>
+                    <dd class="col-sm-9">
+                        <div>By @Model.CreatedBy last @Model.CreatedDate.ToString("f")</div>
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Nesting</dt>
+                    <dd class="col-sm-9">
+                        <dl class="row">
+                            <dt class="col-sm-4">Nested definition list</dt>
+                            <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="card-footer pt-0 border-top">
+            <label class="sidebar-label">Attached Files</label>
+            <ul class="list-unstyled mb-0">
+                <li class="cursor-pointer pb-25">
+                    <img src="~/app-assets/images/icon/psd.png" height="30" alt="psd.png">
+                    <small class="text-muted ml-1 attchement-text">uikit-design.psd</small>
+                </li>
+                <li class="cursor-pointer">
+                    <img src="~/app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
+                    <small class="text-muted ml-1 attchement-text">uikit-design.sketch</small>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $(".livicon-evo").updateLiviconEvo();
+</script>

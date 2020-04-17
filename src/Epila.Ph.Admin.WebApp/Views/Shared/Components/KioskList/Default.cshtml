@@ -3,7 +3,7 @@
     <ul class="users-list-wrapper media-list">
         @foreach (var item in Model)
         {
-            <li class="media">
+            <li class="media" data-kioskId="@item.Id" data-kioskname="@item.KioskName">
                 <div class="user-action">
                     <div class="checkbox-con mr-25">
                         <div class="checkbox checkbox-shadow checkbox-sm">

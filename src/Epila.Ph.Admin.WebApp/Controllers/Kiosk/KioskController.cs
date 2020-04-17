@@ -27,6 +27,12 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
+        [Route("{id}")]
+        public async Task<IActionResult> Details([FromRoute]int id)
+        {
+            return await Task.FromResult(ViewComponent("KioskDetail", new {id})).ConfigureAwait(false);
+        }
+
         public async Task<IActionResult> Test()
         {
             //var result = await _kioskService.GetAllAsync().ConfigureAwait(false);
