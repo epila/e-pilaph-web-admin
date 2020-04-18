@@ -10,7 +10,7 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
     [Route("[controller]/[action]")]
     public class KioskController : Controller
     {
-        private readonly  IKioskService _kioskService;
+        private readonly IKioskService _kioskService;
 
         public KioskController(IKioskService kioskService)
         {
@@ -28,9 +28,31 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
         }
 
         [Route("{id}")]
+        public async Task<IActionResult> GetForm([FromRoute] int id)
+        {
+            return await Task.FromResult(ViewComponent("KioskForm", new { id })).ConfigureAwait(false);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Save(KioskRequest kiosk, int id)
+        {
+            Core.Domain.Kiosk.Kiosk result;
+            if (id > 0)
+            {
+                result = await _kioskService.UpdateAsync(kiosk, id).ConfigureAwait(false);
+            }
+            else
+            {
+                result = await _kioskService.CreateAsync(kiosk).ConfigureAwait(false);
+            }
+            return Ok(result);
+        }
+
+        [Route("{id}")]
         public async Task<IActionResult> Details([FromRoute]int id)
         {
-            return await Task.FromResult(ViewComponent("KioskDetail", new {id})).ConfigureAwait(false);
+            return await Task.FromResult(ViewComponent("KioskDetail", new { id })).ConfigureAwait(false);
         }
 
         public async Task<IActionResult> Test()

@@ -293,6 +293,33 @@ $(function () {
 
     // On compose btn clik of compose mail visible and sidebar left hide
     $('.compose-btn').on('click', function () {
+
+        $.ajaxPrefilter(function (options) {
+            options.async = true;
+        });
+        $.ajax({
+            url: `/kiosk/getform/${0}`,
+            dataType: "html",
+            beforeSend: function () {
+                console.log("loading...");
+                $("#dvKioskForm").html(`<div class="text-center pt-2">
+                                            <div class="spinner-grow text-primary spinner-border-lg" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div><h4 class="text-center pb-2">Loading form please wait...</h4>`);
+            },
+            complete: function () {
+                console.log("complete request");
+            },
+            success: function (html) {
+                $("#dvKioskForm").html(html);
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(jqXhr);
+                $("#dvKioskForm").html(`<p class="font-large-1 text-center p-2 text-danger" > <i class="bx bx-error font-large-1"></i>  Failed to get from resource!</p>`);
+            }
+        });
+
         userNewMailSideBar.addClass('show');
         appContentOverlay.addClass('show');
         sideBarLeft.removeClass('show');
