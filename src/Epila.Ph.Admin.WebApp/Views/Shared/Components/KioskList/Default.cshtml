@@ -1,53 +1,14 @@
 ﻿@model IReadOnlyCollection<Epila.Ph.Core.Domain.Kiosk.Kiosk>
 
-    <ul class="users-list-wrapper media-list">
-        @foreach (var item in Model)
-        {
-            <li class="media" data-kioskId="@item.Id" data-kioskname="@item.KioskName">
-                <div class="user-action">
-                    <div class="checkbox-con mr-25">
-                        <div class="checkbox checkbox-shadow checkbox-sm">
-                            <input type="checkbox" id="checkboxsmall3">
-                            <label for="checkboxsmall3"></label>
-                        </div>
-                    </div>
-                    <span class="favorite" title="Online" data-toggle="tooltip" data-placement="top">
-                        <i class="livicon-evo" data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
-                    </span>
-                </div>
-                <div class="pr-50">
-                    <div class="avatar">
-                        <img class="rounded-circle" src="~/app-assets/images/portrait/small/mmc.png" alt="Generic placeholder image">
-                    </div>
-                </div>
-                <div class="media-body">
-                    <div class="user-details">
-                        <div class="mail-items">
-                            <span class="list-group-item-text text-truncate">@item.KioskName</span>
-                        </div>
-                        <div class="mail-meta-item">
-                            <span class="float-right">
-                                <span class="mail-date">2:15 AM</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mail-message">
-                        <p class="list-group-item-text mb-0 truncate">
-                            @item.KioskDescription
-                        </p>
-                        <div class="mail-meta-item">
-                            <span class="float-right d-flex align-items-center">
-                                <a asp-action="Index" asp-controller="Kiosk" title="Configure" data-toggle="tooltip" data-placement="left">
-                                    <i class="livicon-evo  mr-50" data-options="name: wrench.svg; size: 24px; style: original; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
-                                </a>
-                                <span class="bullet bullet-success bullet-sm"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        }
-        <li class="media">
+<ul class="users-list-wrapper media-list">
+    @foreach (var item in Model)
+    {
+        <li class="media kiosk-item" onclick="KioskController.OnGetKioskGetDetails(@item.Id)" data-kioskId="@item.Id" data-kioskname="@item.KioskName">
+            @*<a id="kiosk-@item.Id" class="" href="" data-ajax="true" data-ajax-begin="KioskController.OnBeginGetKioskDetails()"
+                data-ajax-failure="KioskController.OnErrorGetKioskForm()"
+                       data-ajax-success="KioskController.OnSuccessGetKioskForm()" data-ajax-url="/kiosk/details/@item.Id"
+                       data-ajax-update="#kiosk-details">
+                    </a>*@
             <div class="user-action">
                 <div class="checkbox-con mr-25">
                     <div class="checkbox checkbox-shadow checkbox-sm">
@@ -67,7 +28,7 @@
             <div class="media-body">
                 <div class="user-details">
                     <div class="mail-items">
-                        <span class="list-group-item-text text-truncate">MMC Kiosk 1</span>
+                        <span class="list-group-item-text text-truncate">@item.KioskName</span>
                     </div>
                     <div class="mail-meta-item">
                         <span class="float-right">
@@ -77,8 +38,7 @@
                 </div>
                 <div class="mail-message">
                     <p class="list-group-item-text mb-0 truncate">
-                        I will provide you more details after this Saturday. Hope
-                        that will be fine for you..
+                        @item.KioskDescription
                     </p>
                     <div class="mail-meta-item">
                         <span class="float-right d-flex align-items-center">
@@ -91,7 +51,52 @@
                 </div>
             </div>
         </li>
-        @*<li class="media">
+    }
+    <li class="media" onclick="KioskController.OnGetKioskGetDetails(23521)">
+        <div class="user-action">
+            <div class="checkbox-con mr-25">
+                <div class="checkbox checkbox-shadow checkbox-sm">
+                    <input type="checkbox" id="checkboxsmall3">
+                    <label for="checkboxsmall3"></label>
+                </div>
+            </div>
+            <span class="favorite" title="Online" data-toggle="tooltip" data-placement="top">
+                <i class="livicon-evo" data-options="name: globe.svg; size: 24px; style: filled; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
+            </span>
+        </div>
+        <div class="pr-50">
+            <div class="avatar">
+                <img class="rounded-circle" src="~/app-assets/images/portrait/small/mmc.png" alt="Generic placeholder image">
+            </div>
+        </div>
+        <div class="media-body">
+            <div class="user-details">
+                <div class="mail-items">
+                    <span class="list-group-item-text text-truncate">MMC Kiosk 1</span>
+                </div>
+                <div class="mail-meta-item">
+                    <span class="float-right">
+                        <span class="mail-date">2:15 AM</span>
+                    </span>
+                </div>
+            </div>
+            <div class="mail-message">
+                <p class="list-group-item-text mb-0 truncate">
+                    I will provide you more details after this Saturday. Hope
+                    that will be fine for you..
+                </p>
+                <div class="mail-meta-item">
+                    <span class="float-right d-flex align-items-center">
+                        <a asp-action="Index" asp-controller="Kiosk" title="Configure" data-toggle="tooltip" data-placement="left">
+                            <i class="livicon-evo  mr-50" data-options="name: wrench.svg; size: 24px; style: original; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
+                        </a>
+                        <span class="bullet bullet-success bullet-sm"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+    @*<li class="media">
             <div class="user-action">
                 <div class="checkbox-con mr-25">
                     <div class="checkbox checkbox-shadow checkbox-sm">
@@ -377,4 +382,10 @@
                 </div>
             </div>
         </li>*@
-    </ul>
+</ul>
+
+<a class="get-item" data-ajax="true" data-ajax-begin="KioskController.OnBeginGetKioskDetails()"
+   data-ajax-failure="KioskController.OnErrorGetKioskDetails()"
+   data-ajax-success="KioskController.OnSuccessGetKioskForm()"
+   data-ajax-update="#kiosk-details">
+</a>

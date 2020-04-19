@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "Kiosk";
     ViewData["ModuleTitle"] = "Kiosk Management";
-    ViewData["AppType"]="kiosk-application";
+    ViewData["AppType"] = "kiosk-application";
     Layout = "_LayoutApp";
 
 }
 @section VendorCss{
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/extensions/sweetalert2.min.css">
 }
 @section PageCss
 {
@@ -148,7 +149,7 @@
                                             <i class="bx bx-menu"></i>
                                         </div>
                                         <fieldset class="form-group position-relative has-icon-left m-0">
-                                            <input type="text" class="form-control" id="email-search" placeholder="Search kiosk">
+                                            <input type="text" class="form-control" id="kiosk-search" placeholder="Search kiosk">
                                             <div class="form-control-position">
                                                 <i class="bx bx-search"></i>
                                             </div>
@@ -424,6 +425,8 @@
 <environment include="Development">
     @section VendorScripts{
         @await Html.PartialAsync("_AjaxUnobtrusiveScripts").ConfigureAwait(false)
+        <script src="~/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+        <script src="~/app-assets/vendors/js/extensions/polyfill.min.js"></script>
     }
     @section PageScripts
     {

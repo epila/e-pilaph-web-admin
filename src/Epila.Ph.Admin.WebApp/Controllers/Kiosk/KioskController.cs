@@ -37,16 +37,24 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(KioskRequest kiosk, int id)
         {
-            Core.Domain.Kiosk.Kiosk result;
-            if (id > 0)
+            try
             {
-                result = await _kioskService.UpdateAsync(kiosk, id).ConfigureAwait(false);
+                Core.Domain.Kiosk.Kiosk result;
+                if (id > 0)
+                {
+                    result = await _kioskService.UpdateAsync(kiosk, id).ConfigureAwait(false);
+                }
+                else
+                {
+                    result = await _kioskService.CreateAsync(kiosk).ConfigureAwait(false);
+                }
+                return Ok(result);
             }
-            else
+            catch (Exception e)
             {
-                result = await _kioskService.CreateAsync(kiosk).ConfigureAwait(false);
+                return BadRequest(new {data=""});
             }
-            return Ok(result);
+           
         }
 
         [Route("{id}")]

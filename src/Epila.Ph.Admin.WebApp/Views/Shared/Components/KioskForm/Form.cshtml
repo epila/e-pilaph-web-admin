@@ -1,26 +1,30 @@
 ﻿@model Epila.Ph.Core.Domain.Kiosk.KioskRequest 
 <!-- form start -->
-<form asp-action="Save" asp-antiforgery="true" asp-route-id="@ViewBag.KIOSK_ID" method="post" id="compose-form" data-ajax="true">
-    <div class="card-content">
-        <div class="card-body pt-0">
-            <div class="form-label-group">
-                <input asp-for="KioskName" class="form-control" placeholder="Kiosk Name" required>
-                <label asp-for="KioskName">Kiosk Name</label>
-            </div>
-            <div class="form-label-group">
-                <textarea asp-for="KioskDescription" class="form-control" placeholder="Description"></textarea>
-                <label asp-for="KioskDescription">Description</label>
+    <form asp-action="Save" asp-controller="Kiosk" asp-antiforgery="true" asp-route-id="1" id="compose-form"
+          data-ajax="true"
+          data-ajax-begin="KioskAjax.OnBeginSaveKiosk"
+          data-ajax-complete="KioskAjax.OnCompleteSaveKiosk"
+          data-ajax-failure="KioskAjax.OnErrorSaveKiosk">
+        <div class="card-content">
+            <div class="card-body pt-0">
+                <div class="form-label-group">
+                    <input asp-for="KioskName" class="form-control" placeholder="Kiosk Name" required>
+                    <label asp-for="KioskName">Kiosk Name</label>
+                </div>
+                <div class="form-label-group">
+                    <textarea asp-for="KioskDescription" class="form-control" placeholder="Description"></textarea>
+                    <label asp-for="KioskDescription">Description</label>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer d-flex justify-content-end pt-0">
-        <button type="reset" onclick="KioskController.OnCancelKioskForm()" class="btn btn-light-secondary cancel-btn mr-1">
-            <i class='bx bx-x mr-25'></i>
-            <span class="d-sm-inline d-none">Cancel</span>
-        </button>
-        <button type="submit" class="btn-send btn btn-primary">
-            <i class="bx bx-send mr-25"></i> <span class="d-sm-inline d-none">Save</span>
-        </button>
-    </div>
-</form>
+        <div class="card-footer d-flex justify-content-end pt-0">
+            <button type="reset" onclick="KioskController.OnCancelKioskForm()" class="btn btn-light-secondary cancel-btn mr-1">
+                <i class='bx bx-x mr-25'></i>
+                <span class="d-sm-inline d-none">Cancel</span>
+            </button>
+            <button type="submit" class="btn-send btn btn-primary">
+                <i class="bx bx-send mr-25"></i> <span class="d-sm-inline d-none">Save</span>
+            </button>
+        </div>
+    </form>
 <!-- form start end-->
