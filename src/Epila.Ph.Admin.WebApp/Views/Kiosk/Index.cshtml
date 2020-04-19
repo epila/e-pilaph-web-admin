@@ -2,14 +2,15 @@
 @{
     ViewData["Title"] = "Kiosk";
     ViewData["ModuleTitle"] = "Kiosk Management";
+    ViewData["AppType"]="kiosk-application";
     Layout = "_LayoutApp";
+
 }
 @section VendorCss{
-    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/editors/quill/quill.snow.css">
 }
 @section PageCss
 {
-    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/app-email.css">
+    <link href="~/assets/css/kiosk/Kiosk.css" rel="stylesheet" />
 }
 <div class="content-area-wrapper">
     <div class="sidebar-left">
@@ -22,11 +23,13 @@
                 <!-- sidebar close icon -->
                 <div class="email-app-menu">
                     <div class="form-group form-group-compose">
-                        <!-- compose button  -->
-                        <button type="button" class="btn btn-primary btn-block my-2 compose-btn">
+                        <!-- new button  -->
+                        <a class="btn btn-primary btn-block my-2" href="" data-ajax="true" data-ajax-begin="KioskController.OnBeginGetKioskForm()" data-ajax-failure="KioskController.OnErrorGetKioskForm()"
+                           data-ajax-success="KioskController.OnSuccessGetKioskForm()" data-ajax-url="/kiosk/getform/0"
+                           data-ajax-update="#dvKioskForm">
                             <i class="bx bx-plus"></i>
                             New Kiosk
-                        </button>
+                        </a>
                     </div>
                     <div class="sidebar-menu-list">
                         <!-- sidebar menu  -->
@@ -66,11 +69,11 @@
                 </div>
             </div>
             <!-- User new mail right area -->
-            <div class="compose-new-mail-sidebar">
+            <div class="new-kiosk-sidebar">
                 <div class="card shadow-none quill-wrapper p-0">
                     <div class="card-header">
                         <h3 class="card-title" id="emailCompose">New Kiosk</h3>
-                        <button type="button" class="close close-icon">
+                        <button onclick="KioskController.OnCancelKioskForm()" type="button" class="close close-icon">
                             <i class="bx bx-x"></i>
                         </button>
                     </div>
@@ -94,8 +97,8 @@
                 <div class="app-content-overlay"></div>
                 <div class="email-app-area">
                     <!-- Email list Area -->
-                    <div class="email-app-list-wrapper">
-                        <div class="email-app-list">
+                    <div class="kiosk-app-list-wrapper">
+                        <div class="kiosk-app-list">
                             <div class="email-action">
                                 <!-- action left start here -->
                                 <div class="action-left d-flex align-items-center">
@@ -163,7 +166,7 @@
                             </div>
                             <!-- / action right -->
                             <!-- email user list start -->
-                            <div class="email-user-list list-group">
+                            <div class="kiosk-list list-group">
                                 @await Component.InvokeAsync("KioskList").ConfigureAwait(false)
                                 <!-- no result when nothing to show on list -->
                                 <div class="no-results">
@@ -175,7 +178,7 @@
                     </div>
                     <!--/ Email list Area -->
                     <!-- Detailed Email View -->
-                    <div  class="email-app-details">
+                    <div class="kiosk-details">
                         <!-- email detail view header -->
                         <div class="email-detail-header">
                             <div class="email-header-left d-flex align-items-center mb-1">
@@ -236,86 +239,13 @@
                             </div>
                         </div>
                         <!-- email detail view header end-->
-                        <div class="email-scroll-area">
+                        <div class="kiosk-scroll-area">
                             <!-- email details  -->
                             <div class="row">
                                 <div class="col-12">
                                     <div class="collapsible email-detail-head">
-                                        <div id="email-app-details" class="card collapse-header open" role="tablist">
-                                          Loading...
-                                        </div>
-                                        <div class="card collapse-header open" role="tablist">
-                                            <div id="headingCollapse6" class="card-header d-flex justify-content-between align-items-center" data-toggle="collapse" role="tab" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                                <div class="collapse-title media">
-                                                    <div class="pr-1">
-                                                        <div class="avatar mr-75">
-                                                            <img src="~/app-assets/images/portrait/small/avatar-s-19.jpg" alt="avtar img holder" width="30" height="30">
-                                                        </div>
-                                                    </div>
-                                                    <div class="media-body mt-25">
-                                                        <span class="text-primary">Lois Jimenez </span>
-                                                        <span class="d-sm-inline d-none"> &lt;lois_jim@gmail.com&gt;</span>
-                                                        <small class="text-muted d-block">to Elnora Reese</small>
-                                                    </div>
-                                                </div>
-                                                <div class="information d-sm-flex d-none align-items-center">
-                                                    <i class='bx bx-paperclip mr-50'></i>
-                                                    <small class="text-muted mr-50">10 Jul 2019, 10:30</small>
-                                                    <span class="favorite">
-                                                        <i class="bx bx-star mr-25"></i>
-                                                    </span>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" id="second-open-submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class='bx bx-dots-vertical-rounded mr-0'></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="second-open-submenu">
-                                                            <a href="#" class="dropdown-item mail-reply">
-                                                                <i class='bx bx-share'></i>
-                                                                Reply
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class='bx bx-redo'></i>
-                                                                Forward
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class='bx bx-info-circle'></i>
-                                                                Report Spam
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="collapse6" role="tabpanel" aria-labelledby="headingCollapse7" class="collapse show">
-                                                <div class="card-content">
-                                                    <div class="card-body py-1">
-                                                        <p class="text-bold-500">Greetings!</p>
-                                                        <p>
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                                            type and scrambled it to make a type specimen book.
-                                                        </p>
-                                                        <p>
-                                                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                                                            essentially unchanged.
-                                                        </p>
-                                                        <p class="mb-0">Sincerely yours,</p>
-                                                        <p class="text-bold-500">Envato Design Team</p>
-                                                    </div>
-                                                    <div class="card-footer pt-0 border-top">
-                                                        <label class="sidebar-label">Attached Files</label>
-                                                        <ul class="list-unstyled mb-0">
-                                                            <li class="cursor-pointer pb-25">
-                                                                <img src="~/app-assets/images/icon/psd.png" height="30" alt="psd.png">
-                                                                <small class="text-muted ml-1 attchement-text">uikit-design.psd</small>
-                                                            </li>
-                                                            <li class="cursor-pointer">
-                                                                <img src="~/app-assets/images/icon/sketch.png" height="30" alt="sketch.png">
-                                                                <small class="text-muted ml-1 attchement-text">uikit-design.sketch</small>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div id="kiosk-details" class="card collapse-header open" role="tablist">
+                                            Loading...
                                         </div>
                                         <div class="card collapse-header open" role="tablist">
                                             <div id="headingCollapse7" class="card-header d-flex justify-content-between align-items-center" data-toggle="collapse" role="tab" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
@@ -481,48 +411,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- email details  end-->
-                            <div class="row px-2 mb-4">
-                                <!-- quill editor for reply message -->
-                                <div class="col-12 px-0">
-                                    <div class="card shadow-none border rounded">
-                                        <div class="card-body quill-wrapper">
-                                            <span>Reply to Lois Jimenez</span>
-                                            <div class="snow-container" id="detail-view-quill">
-                                                <div class="detail-view-editor"></div>
-                                                <div class="d-flex justify-content-end">
-                                                    <div class="detail-quill-toolbar">
-                                                        <span class="ql-formats mr-50">
-                                                            <button class="ql-bold"></button>
-                                                            <button class="ql-italic"></button>
-                                                            <button class="ql-underline"></button>
-                                                            <button class="ql-link"></button>
-                                                            <button class="ql-image"></button>
-                                                        </span>
-                                                    </div>
-                                                    <button class="btn btn-primary send-btn">
-                                                        <i class='bx bx-send mr-25'></i>
-                                                        <span class="d-none d-sm-inline"> Send</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- details  end-->
+
                         </div>
                     </div>
-                    <!--/ Detailed Email View -->
+                    <!--/ Detailed  View -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-@section VendorScripts{
-    @await Html.PartialAsync("_AjaxUnobtrusiveScripts").ConfigureAwait(false)
-    <script src="~/app-assets/vendors/js/editors/quill/quill.min.js"></script>
-}
-@section PageScripts
-{
-    <script src="~/app-assets/js/scripts/pages/app-email.js"></script>
-}
+<environment include="Development">
+    @section VendorScripts{
+        @await Html.PartialAsync("_AjaxUnobtrusiveScripts").ConfigureAwait(false)
+    }
+    @section PageScripts
+    {
+        <script src="~/assets/js/kiosk/KioskController.js"></script>
+        <script>
+            $(function () {
+                let kioskController = new KioskController();
+                kioskController.initPage();
+            });
+        </script>
+    }
+
+</environment>
+<environment exclude="Development"></environment>
