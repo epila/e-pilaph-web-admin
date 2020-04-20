@@ -1,30 +1,35 @@
 ﻿@model Epila.Ph.Core.Domain.Kiosk.KioskRequest 
 <!-- form start -->
-    <form asp-action="Save" asp-controller="Kiosk" asp-antiforgery="true" asp-route-id="1" id="compose-form"
-          data-ajax="true"
-          data-ajax-begin="KioskAjax.OnBeginSaveKiosk"
-          data-ajax-complete="KioskAjax.OnCompleteSaveKiosk"
-          data-ajax-failure="KioskAjax.OnErrorSaveKiosk">
-        <div class="card-content">
-            <div class="card-body pt-0">
-                <div class="form-label-group">
-                    <input asp-for="KioskName" class="form-control" placeholder="Kiosk Name" required>
-                    <label asp-for="KioskName">Kiosk Name</label>
-                </div>
-                <div class="form-label-group">
-                    <textarea asp-for="KioskDescription" class="form-control" placeholder="Description"></textarea>
-                    <label asp-for="KioskDescription">Description</label>
-                </div>
+<form asp-action="Save" asp-controller="Kiosk" asp-antiforgery="true" asp-route-id="@ViewBag.KIOSK_ID" id="compose-form"
+      data-ajax="true"
+      data-ajax-begin="KioskAjax.OnBeginSaveKiosk"
+      data-ajax-complete="KioskAjax.OnCompleteSaveKiosk"
+      data-ajax-success="KioskAjax.OnSuccessSaveKiosk"
+      data-ajax-failure="KioskAjax.OnErrorSaveKiosk">
+     <input type="hidden" asp-for="UserName"/>
+    <div class="card-content">
+        <div class="card-body pt-0">
+            <div class="form-label-group">
+                <input asp-for="KioskName" class="form-control" placeholder="Kiosk Name" required>
+                <label asp-for="KioskName">Kiosk Name</label>
+            </div>
+            <div class="form-label-group">
+                <textarea asp-for="KioskDescription" class="form-control" placeholder="Description"></textarea>
+                <label asp-for="KioskDescription">Description</label>
             </div>
         </div>
-        <div class="card-footer d-flex justify-content-end pt-0">
-            <button type="reset" onclick="KioskController.OnCancelKioskForm()" class="btn btn-light-secondary cancel-btn mr-1">
-                <i class='bx bx-x mr-25'></i>
-                <span class="d-sm-inline d-none">Cancel</span>
-            </button>
-            <button type="submit" class="btn-send btn btn-primary">
-                <i class="bx bx-send mr-25"></i> <span class="d-sm-inline d-none">Save</span>
-            </button>
-        </div>
-    </form>
+    </div>
+    <div class="card-footer d-flex justify-content-end pt-0">
+        <button type="reset" onclick="KioskController.OnCancelKioskForm()" class="btn btn-light-secondary cancel-btn mr-1">
+            <i class='bx bx-x mr-25'></i>
+            <span class="d-sm-inline d-none">Cancel</span>
+        </button>
+        <button id="btn-reset" type="reset" onclick="KioskController.OnFormReset()" class="btn-send btn btn-primary hidden">
+            <i class="bx bx-edit-alt mr-25"></i> <span class="d-sm-inline d-none">Add Again</span>
+        </button>
+        <button type="submit"  class="btn-send btn btn-primary">
+            <i class="bx bx-send mr-25"></i> <span class="d-sm-inline d-none">Save</span>
+        </button>
+    </div>
+</form>
 <!-- form start end-->

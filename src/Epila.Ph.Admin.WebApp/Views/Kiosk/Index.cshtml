@@ -138,6 +138,17 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <li class="list-inline-item mail-delete">
+                                            <a id="btn-refresh"  data-ajax="true" data-ajax-begin="KioskController.OnBeginRefreshKioskList()"
+                                               data-ajax-failure="KioskController.OnErrorRefreshKioskList()"
+                                               data-ajax-success="KioskController.OnSuccesRefreshKioskList()"
+                                               data-ajax-update="#dv-kiosk-list" data-ajax-url="/kiosk/filterlist" class="btn btn-icon action-icon cursor-pointer" data-toggle="tooltip" data-placement="top" title="Refresh List">
+                                                <span class="fonticon-wrap">
+                                                    <i class="livicon-evo" data-options="name: refresh.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
+                                                    </i>
+                                                </span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- action left end here -->
@@ -167,13 +178,9 @@
                             </div>
                             <!-- / action right -->
                             <!-- email user list start -->
-                            <div class="kiosk-list list-group">
+                            <div id="dv-kiosk-list" class="kiosk-list list-group">
                                 @await Component.InvokeAsync("KioskList").ConfigureAwait(false)
-                                <!-- no result when nothing to show on list -->
-                                <div class="no-results">
-                                    <i class="bx bx-error-circle font-large-2"></i>
-                                    <h5>No Items Found</h5>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

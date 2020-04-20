@@ -27,6 +27,11 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
+        public async Task<IActionResult> FilterList()
+        {
+            return await Task.FromResult(ViewComponent("KioskList")).ConfigureAwait(false);
+        }
+
         [Route("{id}")]
         public async Task<IActionResult> GetForm([FromRoute] int id)
         {
@@ -52,7 +57,7 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             }
             catch (Exception e)
             {
-                return BadRequest(new {data=""});
+                return BadRequest(new {kiosk,error=e.Message});
             }
            
         }

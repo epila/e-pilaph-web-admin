@@ -14,7 +14,10 @@ namespace Epila.Ph.Admin.WebApp.Components.Kiosk
         }
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            var kioskRequest = new KioskRequest();
+            var kioskRequest = new KioskRequest
+            {
+                UserName = "dennispita"
+            };
             ViewBag.KIOSK_ID = 0;
             if (id>0)
             {

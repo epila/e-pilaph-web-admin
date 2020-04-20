@@ -67,7 +67,33 @@ class KioskController {
         $(".get-item")[0].click();
         console.log(id);
     }
-  
+
+    static OnFormReset() {
+        $(".btn-send ").removeClass("hidden");
+        $("#btn-reset ").addClass("hidden");
+        $('#compose-form').find('input').removeAttr("readonly");
+        $('#compose-form').find('textarea').removeAttr("readonly");
+    }
+    
+    static OnBeginRefreshKioskList() {
+        $("#dv-kiosk-list").html(`<div class="text-center pt-2">
+                                            <div class="spinner-grow text-primary spinner-border-lg" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div><h4 class="text-center pb-2">Loading form please wait...</h4>`);
+    }
+
+    static OnErrorRefreshKioskList() {
+        $("#dv-kiosk-list").html(`<div class="text-center pt-2">
+                                    <i class="livicon-evo" data-options="name: bug.svg;  style: original; strokeColor:#5A8DEE;"></i>
+                                </div>
+                                <h4 class='text-center p-2 text-danger'>Failed to load kiosk data! </br> <a class="btn btn-warning btn-sm mt-2 glow shadow" href="#">Report this error.</a></h4>`);
+        $(".livicon-evo").updateLiviconEvo();
+    }
+
+    static OnSuccesRefreshKioskList() {
+        $(".livicon-evo").updateLiviconEvo();
+    }
     initPage() {
         // To add Perfect Scrollbar
         // ---------------------------
@@ -286,41 +312,58 @@ var KioskAjax = (function () {
     return {
         OnBeginSaveKiosk: function () {
             Swal.fire({
-                title: 'Saving kiosk in progress',
-                html: 'please wait...',
+                title: "Saving kiosk in progress",
+                html: "please wait...",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 confirmButtonText: "",
                 onBeforeOpen: () => {
-                    Swal.showLoading()
+                    Swal.showLoading();
                 }
             }).then((result) => {
-            })
+            });
         },
-        OnErrorSaveKiosk: function (data,status) {
+        OnErrorSaveKiosk: function (data, status) {
             console.log(data);
             Swal.fire({
-                title: 'Error',
-                text: 'Failed to save kiosk :)'+status ,
-                type: 'error'
+                title: "Error!",
+                text: `Failed to save kiosk :${data.responseJSON.kiosk.kioskName}`,
+                type: 'error',
+                allowOutsideClick: false
             }).then((result) => {
-                console.log(status );
-            })
+                console.log(result);
+            });
         },
-        OnSuccessSaveKiosk: function() {
-
-
+        OnSuccessSaveKiosk: function (data, status) {
+            Swal.fire({
+                title: 'Successful!',
+                text: 'That thing is still around?',
+                type: 'success',
+                showCloseButton: true
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.close) {
+                    Swal.close();
+                }
+            });
         },
-        OnCompleteSaveKiosk : function (data,status) {
-            //console.log(data);
-            //console.log(status);
-            ////console.log(xhr);
+        OnCompleteSaveKiosk: function (data, status) {
+            $('#compose-form').find('input').attr("readonly",true);
+            $('#compose-form').find('textarea').attr("readonly",true);
+            $(".btn-send").addClass("hidden");
+            $("#btn-reset").removeClass("hidden");
+            $("#btn-refresh").click();
+            //Swal.fire(
+            //    'Successful!',
+            //    'That thing is still around?',
+            //    'success'
+            //)
             //Swal.fire({
-            //    title: 'Error',
-            //    text: 'Failed to save kiosk :)' ,
-            //    type: 'error'
-            //}).then((result) => {
-            //})
+            //    title: "Success!",
+            //    text: `New kiosk has been saved! \n${data.kioskName}` ,
+            //    type: "success",
+            //    showConfirmButton: false,
+            //    timer: 1500
+            //});
         }
     };
 })();
