@@ -25,7 +25,7 @@
                 <div class="email-app-menu">
                     <div class="form-group form-group-compose">
                         <!-- new button  -->
-                        <a class="btn btn-primary btn-block my-2" href="" data-ajax="true" data-ajax-begin="KioskController.OnBeginGetKioskForm()" data-ajax-failure="KioskController.OnErrorGetKioskForm()"
+                        <a class="btn btn-primary btn-block my-2 glow shadow" href="" data-ajax="true" data-ajax-begin="KioskController.OnBeginGetKioskForm()" data-ajax-failure="KioskController.OnErrorGetKioskForm()"
                            data-ajax-success="KioskController.OnSuccessGetKioskForm()" data-ajax-url="/kiosk/getform/0"
                            data-ajax-update="#dvKioskForm">
                             <i class="bx bx-plus"></i>
@@ -104,14 +104,14 @@
                                 <!-- action left start here -->
                                 <div class="action-left d-flex align-items-center">
                                     <!-- select All checkbox -->
-                                    <div class="checkbox checkbox-shadow checkbox-sm selectAll mr-50">
+                                    <div class="checkbox checkbox-shadow checkbox-sm selectAll mr-50 ">
                                         <input onclick="KioskController.OnCheckSelectAll(this)" type="checkbox" id="checkSelectAll">
                                         <label for="checkSelectAll"></label>
                                     </div>
                                     <!-- delete unread dropdown -->
                                     <ul class="list-inline m-0 d-flex">
                                         <li class="list-inline-item ">
-                                            <button onclick="KioskController.OnClickDeleteButton()" type="button" class="btn btn-icon action-icon mail-delete" data-toggle="tooltip" data-placement="top" title="Delete Selected">
+                                            <button onclick="KioskController.OnClickDeleteButton()" type="button" class="btn btn-icon action-icon" data-toggle="tooltip" data-placement="top" title="Delete Selected">
                                                 <span class="fonticon-wrap">
                                                     <i class="livicon-evo" data-options="name: trash.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
                                                     </i>

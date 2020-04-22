@@ -50,8 +50,7 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             }
             return Ok(new { ids = string.Join(',',successDeleted)});
         }
-
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(KioskRequest kiosk, int id)
@@ -82,17 +81,10 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return await Task.FromResult(ViewComponent("KioskDetail", new { id })).ConfigureAwait(false);
         }
 
-        public async Task<IActionResult> Test()
+        [Route("{id}")]
+        public async Task<IActionResult> Configure(int id)
         {
-            //var result = await _kioskService.GetAllAsync().ConfigureAwait(false);
-            //var postresult = await _kioskService.UpdateAsync(new KioskRequest
-            //{
-            //    KioskDescription = "Kiosk Test Desc update",
-            //    KioskName = "Kiosk Test Name Update",
-            //    UserName = "pita"
-            //},2004).ConfigureAwait(false);
-            //var delete= await _kioskService.DeleteAsync(2005).ConfigureAwait(false);
-            return Json("");
+            return await Task.FromResult(View()).ConfigureAwait(false);
         }
 
         [Route("{template}")]
@@ -118,9 +110,5 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
-    }
-    public class DeleteKioskParam
-    {
-        public List<int> Ints { get; set; }
     }
 }

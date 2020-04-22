@@ -393,7 +393,7 @@ var KioskAjax = (function () {
         OnSuccessSaveKiosk: function (data, status) {
             Swal.fire({
                 title: 'Successful!',
-                html: `New kiosk has been saved! </b> ${data.kioskName}`,
+                html: `New kiosk has been saved! </b> <a id="redirectHandler"> ${data.kioskName} </a>`,
                 type: 'success',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -404,7 +404,9 @@ var KioskAjax = (function () {
                 if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.close();
                 } else {
-                    console.log("redirect");
+                    $("#redirectHandler").attr("href",`/kiosk/configure/${data.id}`);
+                    console.log($("#redirectHandler"));
+                    $("#redirectHandler")[0].click();
                 }
             });
         },

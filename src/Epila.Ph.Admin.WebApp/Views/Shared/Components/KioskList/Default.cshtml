@@ -37,7 +37,7 @@
                     </p>
                     <div class="mail-meta-item">
                         <span class="float-right d-flex align-items-center">
-                            <a asp-action="Configure" asp-controller="Kiosk" title="Configure" data-toggle="tooltip" data-placement="left">
+                            <a asp-action="Configure" asp-route-id="@item.Id" asp-controller="Kiosk" title="Configure" data-toggle="tooltip" data-placement="left">
                                 <i class="livicon-evo  mr-50" data-options="name: wrench.svg; size: 24px; style: original; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;"></i>
                             </a>
                             <span class="bullet bullet-success bullet-sm"></span>
