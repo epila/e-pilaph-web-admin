@@ -8,6 +8,7 @@ var appContent = $(".app-content"),
     kioskNewSideBar = $(".new-kiosk-sidebar"),
     kioskList = $(".kiosk-list"),
     kioskAppList = $(".kiosk-app-list"),
+    checkSelectAll = $("#checkSelectAll"),
     checkbox_con = $(".user-action .checkbox-con"),
     $primary = "#5A8DEE";
 
@@ -17,7 +18,7 @@ class KioskController {
     }
 
     static OnSuccessGetKioskForm() {
-
+      
     }
 
     static OnErrorGetKioskForm() {
@@ -74,7 +75,7 @@ class KioskController {
         $('#compose-form').find('input').removeAttr("readonly");
         $('#compose-form').find('textarea').removeAttr("readonly");
     }
-    
+
     static OnBeginRefreshKioskList() {
         $("#dv-kiosk-list").html(`<div class="text-center pt-2">
                                             <div class="spinner-grow text-primary spinner-border-lg" role="status">
@@ -91,12 +92,106 @@ class KioskController {
         $(".livicon-evo").updateLiviconEvo();
     }
 
-    static OnSuccesRefreshKioskList() {
+    static OnSuccessRefreshKioskList() {
         $(".livicon-evo").updateLiviconEvo();
+        if (checkSelectAll.is(":checked")) {
+            $(".list-wrapper").find("input").prop('checked',true).closest(".media").addClass("selected-row-bg");
+        }
+        else {
+            $(".list-wrapper").find("input").prop('checked', "").closest(".media").removeClass("selected-row-bg");
+        }
     }
+
+    static OnCheckKioskChange(el) {
+        var $this = $(el);
+        if ($this.is(":checked")) {
+            $this.closest(".media").addClass("selected-row-bg");
+        }
+        else {
+            $this.closest(".media").removeClass("selected-row-bg");
+        }
+    }
+
+    static OnClickDeleteButton() {
+        const selectedKiosk = $(".list-wrapper").find("input:checked");
+
+        const selectedIds = new Array();
+        selectedKiosk.each(function (i, a) {
+            var txn = a.dataset;
+            console.log(parseInt(txn.kioskid));
+            selectedIds.push(parseInt(txn.kioskid));
+        });
+        console.log(selectedIds);
+        console.log(selectedIds.toString());
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            confirmButtonClass: 'btn btn-primary ml-1 shadow glow',
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true,
+            showLoaderOnConfirm: true,
+            cancelButtonClass: "btn btn-danger ml-1 shadow glow",
+            preConfirm: () => {
+                return fetch(`/kiosk/delete/${selectedIds.toString()}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                            `Request failed: ${error}`
+                        );
+                    });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            console.log(result);
+            if (result.value) {
+                Swal.fire({
+                    title: `Successful!`,
+                    html: `Selected kiosk/s has been deleted! <br/> ${result.value.ids}`,
+                    type: 'success'
+                });
+                const deletedItems = result.value.ids.split(",");
+                for (var i = 0; i < deletedItems.length; i++) {
+                    console.log(deletedItems[i]);
+                    $(`#kiosk-${deletedItems[i]}`).remove();
+                }
+
+                kioskApplication.find(".selectAll input").prop('checked', "");
+                const tblRow = $(".kiosk-list .list-wrapper li:visible").length; //here tblRow is table name
+
+                //Check if table has row or not
+                if (tblRow === 0) {
+                    kioskList.find('.no-results').addClass('show');
+                }
+                else {
+                    if (kioskList.find('.no-results').hasClass('show')) {
+                        kioskList.find('.no-results').removeClass('show');
+                    }
+                }
+            }
+        });
+    }
+
+    static OnCheckSelectAll() {
+        if (checkSelectAll.is(":checked")) {
+            $(".list-wrapper").find("input").prop('checked',true).closest(".media").addClass("selected-row-bg");
+        }
+        else {
+            $(".list-wrapper").find("input").prop('checked', "").closest(".media").removeClass("selected-row-bg");
+        }
+    }
+
     initPage() {
-        // To add Perfect Scrollbar
-        // ---------------------------
         // left Sidebar
         if ($('.sidebar-menu-list').length > 0) {
             var sidebarMenuList = new PerfectScrollbar(".sidebar-menu-list", {
@@ -188,46 +283,7 @@ class KioskController {
         checkbox_con.on("click", function (e) {
             e.stopPropagation();
         });
-
-        // on checkbox status change add or remove background color class
-        checkbox_con.find("input").on('change', function () {
-            var $this = $(this);
-            if ($this.is(":checked")) {
-                $this.closest(".media").addClass("selected-row-bg");
-            }
-            else {
-                $this.closest(".media").removeClass("selected-row-bg");
-            }
-        });
-
-        // Select all checkbox
-        $(document).on("change", ".kiosk-app-list .selectAll input", function () {
-            if ($(this).is(":checked")) {
-                checkbox_con.find("input").prop('checked', this.checked).closest(".media").addClass("selected-row-bg");
-            }
-            else {
-                checkbox_con.find("input").prop('checked', "").closest(".media").removeClass("selected-row-bg");
-            }
-        });
-
-        // On click of delete btn, delete all emails & show "no result found"
-        kioskApplication.find(".mail-delete").on("click", function () {
-            checkbox_con.find("input:checked").closest("li").remove();
-            kioskApplication.find(".selectAll input").prop('checked', "");
-
-            var tblRow = $(".kiosk-list .users-list-wrapper li:visible").length; //here tbl_test is table name
-
-            //Check if table has row or not
-            if (tblRow === 0) {
-                kioskList.find('.no-results').addClass('show');
-            }
-            else {
-                if (kioskList.find('.no-results').hasClass('show')) {
-                    kioskList.find('.no-results').removeClass('show');
-                }
-            }
-        });
-
+        
         // Mark unread mail and remove background color when checkbox unchecked
         kioskApplication.find(".mail-unread").on("click", function () {
             checkbox_con.find("input:checked").closest("li").removeClass("mail-read");
@@ -302,7 +358,7 @@ class KioskController {
                     appContentOverlay.removeClass('show');
                     kioskNewSideBar.removeClass('show');
                 }
-                $('#compose-form').find('input').val(""); // input filed reset when resize screen
+                $('#compose-form').find("input").val(""); // input filed reset when resize screen
             }
         });
     }
@@ -337,33 +393,27 @@ var KioskAjax = (function () {
         OnSuccessSaveKiosk: function (data, status) {
             Swal.fire({
                 title: 'Successful!',
-                text: 'That thing is still around?',
+                html: `New kiosk has been saved! </b> ${data.kioskName}`,
                 type: 'success',
-                showCloseButton: true
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Configure now',
+                cancelButtonText: 'Configure later'
             }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.close) {
+                if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.close();
+                } else {
+                    console.log("redirect");
                 }
             });
         },
         OnCompleteSaveKiosk: function (data, status) {
-            $('#compose-form').find('input').attr("readonly",true);
-            $('#compose-form').find('textarea').attr("readonly",true);
+            $('#compose-form').find('input').attr("readonly", true);
+            $('#compose-form').find('textarea').attr("readonly", true);
             $(".btn-send").addClass("hidden");
             $("#btn-reset").removeClass("hidden");
             $("#btn-refresh").click();
-            //Swal.fire(
-            //    'Successful!',
-            //    'That thing is still around?',
-            //    'success'
-            //)
-            //Swal.fire({
-            //    title: "Success!",
-            //    text: `New kiosk has been saved! \n${data.kioskName}` ,
-            //    type: "success",
-            //    showConfirmButton: false,
-            //    timer: 1500
-            //});
         }
     };
 })();

@@ -105,13 +105,13 @@
                                 <div class="action-left d-flex align-items-center">
                                     <!-- select All checkbox -->
                                     <div class="checkbox checkbox-shadow checkbox-sm selectAll mr-50">
-                                        <input type="checkbox" id="checkboxsmall">
-                                        <label for="checkboxsmall"></label>
+                                        <input onclick="KioskController.OnCheckSelectAll(this)" type="checkbox" id="checkSelectAll">
+                                        <label for="checkSelectAll"></label>
                                     </div>
                                     <!-- delete unread dropdown -->
                                     <ul class="list-inline m-0 d-flex">
-                                        <li class="list-inline-item mail-delete">
-                                            <button type="button" class="btn btn-icon action-icon" data-toggle="tooltip" data-placement="top" title="Delete Selected">
+                                        <li class="list-inline-item ">
+                                            <button onclick="KioskController.OnClickDeleteButton()" type="button" class="btn btn-icon action-icon mail-delete" data-toggle="tooltip" data-placement="top" title="Delete Selected">
                                                 <span class="fonticon-wrap">
                                                     <i class="livicon-evo" data-options="name: trash.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">
                                                     </i>
@@ -141,7 +141,7 @@
                                         <li class="list-inline-item mail-delete">
                                             <a id="btn-refresh"  data-ajax="true" data-ajax-begin="KioskController.OnBeginRefreshKioskList()"
                                                data-ajax-failure="KioskController.OnErrorRefreshKioskList()"
-                                               data-ajax-success="KioskController.OnSuccesRefreshKioskList()"
+                                               data-ajax-success="KioskController.OnSuccessRefreshKioskList()"
                                                data-ajax-update="#dv-kiosk-list" data-ajax-url="/kiosk/filterlist" class="btn btn-icon action-icon cursor-pointer" data-toggle="tooltip" data-placement="top" title="Refresh List">
                                                 <span class="fonticon-wrap">
                                                     <i class="livicon-evo" data-options="name: refresh.svg; size: 24px; style: lines; strokeColor:#475f7b; eventOn:grandparent; duration:0.85;">

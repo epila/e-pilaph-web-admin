@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Epila.Ph.Admin.WebApp.Models.Kiosk;
 using Epila.Ph.Core.Domain.Kiosk;
@@ -22,11 +23,6 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             return View();
         }
 
-        public IActionResult New()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> FilterList()
         {
             return await Task.FromResult(ViewComponent("KioskList")).ConfigureAwait(false);
@@ -37,6 +33,24 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
         {
             return await Task.FromResult(ViewComponent("KioskForm", new { id })).ConfigureAwait(false);
         }
+
+        [HttpDelete]
+        [Route("{ids}")]
+        public async Task<IActionResult> Delete(string ids)
+        {
+            var selectedKioskId = ids.Split(',');
+            var successDeleted = new List<int>();
+            foreach (var id in selectedKioskId)
+            {
+                var result = await _kioskService.DeleteAsync(int.Parse(id)).ConfigureAwait(false);
+                if (result)
+                {
+                    successDeleted.Add(int.Parse(id));
+                }
+            }
+            return Ok(new { ids = string.Join(',',successDeleted)});
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,5 +112,15 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
             }
             return await Task.FromResult<IActionResult>(View());
         }
+
+        public IActionResult New()
+        {
+            return View();
+        }
+
+    }
+    public class DeleteKioskParam
+    {
+        public List<int> Ints { get; set; }
     }
 }
