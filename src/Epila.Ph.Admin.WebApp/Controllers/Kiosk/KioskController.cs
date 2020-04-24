@@ -84,6 +84,7 @@ namespace Epila.Ph.Admin.WebApp.Controllers.Kiosk
         [Route("{id}")]
         public async Task<IActionResult> Configure(int id)
         {
+            ViewBag.KIOSK_ID = id;
             return await Task.FromResult(View()).ConfigureAwait(false);
         }
 

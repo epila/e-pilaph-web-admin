@@ -25,6 +25,8 @@ namespace Epila.Ph.Admin.WebApp.Components.Kiosk
                 kioskRequest.KioskDescription = kiosk.KioskDescription;
                 kioskRequest.KioskName = kiosk.KioskName;
                 kioskRequest.UserName = "dennispita";
+
+                return await Task.FromResult<IViewComponentResult>(View("EditForm", kioskRequest)).ConfigureAwait(false);
             }
             return await Task.FromResult<IViewComponentResult>(View("Form", kioskRequest)).ConfigureAwait(false);
         }
